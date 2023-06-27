@@ -7,6 +7,20 @@ exports.createBrandService = async (data) =>{
 
 
 exports.getBrandsService = async () =>{
-    const result = await Brand.find({});
+    const result = await Brand.find({}).select('-product -suppliers');
     return result;
 }
+
+exports.getBrandByIdService = async (id) => {
+    const brand = await Brand.findOne({ _id: id });
+    return brand;
+  }
+
+
+  exports.updateBrandByIdService = async (id, data) => {
+    const result = await Brand.updateOne({ _id: id }, data, {
+        runValidators: true
+    });
+    return result;
+  }
+  

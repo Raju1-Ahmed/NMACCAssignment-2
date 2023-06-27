@@ -49,12 +49,12 @@ exports.createProduct = async (req, res, next) => {
 
   try {
     // save or create
-    const result = await createProductService(req.body);
+    const product = await createProductService(req.body);
     // result.logger()
     res.status(200).json({
       status: 'success',
       message: 'Data inserted successfully!',
-      data: result
+      data: product
     })
   } catch (error) {
     res.status(400).json({
