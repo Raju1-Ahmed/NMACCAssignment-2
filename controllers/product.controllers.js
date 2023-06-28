@@ -144,3 +144,13 @@ exports.bulkUpdateProductDelete = async (req, res, next) => {
     })
   }
 }
+
+
+exports.fileUpload = async (req, res, next) => {
+  try {
+    // const result = await bulkUpdateProductServiceDeleteById(req.body.ids);
+    res.status(200).json(req.file);
+  } catch (error) {
+  
+  }
+}

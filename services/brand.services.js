@@ -7,7 +7,7 @@ exports.createBrandService = async (data) =>{
 
 
 exports.getBrandsService = async () =>{
-    const result = await Brand.find({}).select('-product -suppliers');
+    const result = await Brand.find({});
     return result;
 }
 
