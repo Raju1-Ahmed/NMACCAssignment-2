@@ -4,8 +4,9 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const productRoute = require('./routes/product.route');
 const brandRoute = require("./routes/Brand.route");
-const category = require("./routes/category.route");
-const store = require("./routes/store.route");
+const categoryRoute = require("./routes/category.route");
+const storeRoute = require("./routes/store.route");
+const supplierRoute = require("./routes/supplier.route");
 
 
 //middleware
@@ -20,8 +21,9 @@ app.get("/", (req, res) => {
 
 app.use('/api/v1/product', productRoute)
 app.use('/api/v1/brand', brandRoute)
-app.use('/api/v1/category',category)
-app.use('/api/v1/store',store)
+app.use('/api/v1/category',categoryRoute)
+app.use('/api/v1/store',storeRoute)
+app.use('/api/v1/supplier',supplierRoute)
 
 
 module.exports = app;
