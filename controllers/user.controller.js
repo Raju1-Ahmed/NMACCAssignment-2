@@ -52,13 +52,13 @@ exports.login = async (req, res) => {
         }
 
         const token = generateToken(user);
-
+        const {password:pwd,...others} = user.toObject();
 
         res.status(200).json({
             status: "success",
             message: "Successfully logged in",
             data:{
-                user,
+                others,
                 token
             }
         });
@@ -69,3 +69,18 @@ exports.login = async (req, res) => {
         });
     }
 };
+
+exports.getMe = async (req, res) =>{
+    try {
+        const user = await findUserByEmail(req.user?.email);
+        res.status(200).json({
+            status: "success",
+            data: user
+        })
+    } catch (error) {
+        req.status(500).json({
+            status: "fail",
+            error,
+        })
+    }
+}
